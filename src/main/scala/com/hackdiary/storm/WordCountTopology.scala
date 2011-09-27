@@ -19,13 +19,11 @@ object WordCountTopology {
 
     builder.setSpout(1, new WordSpout)
     builder.setBolt(2, new WordCount, 8).fieldsGrouping(1, new Fields("words"))
-    builder.setBolt(3, new JsonOut).shuffleGrouping(2)
+    builder.setBolt(3, new RedisOut).shuffleGrouping(2)
 
-    val conf = new java.util.HashMap[Any,Any]
-    conf.put(Config.TOPOLOGY_DEBUG, true)
+    val conf = Map(Config.TOPOLOGY_DEBUG -> false)
 
     val cluster = new LocalCluster
-
     cluster.submitTopology("test", conf, builder.createTopology)
   }
 }
@@ -93,7 +91,7 @@ class WordCount extends IBasicBolt {
   }
 }
 
-class JsonOut extends IBasicBolt {
+class RedisOut extends IBasicBolt {
   var jedis : Jedis = _
   override def prepare(conf : java.util.Map[_,_], context : TopologyContext) = {
     jedis = new Jedis("localhost")

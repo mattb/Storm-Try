@@ -1,5 +1,3 @@
-seq(assemblySettings: _*)
-
 resolvers += "clojars" at "http://clojars.org/repo"
 
 libraryDependencies ++= Seq(
@@ -12,4 +10,4 @@ libraryDependencies ++= Seq(
     "redis.clients" % "jedis" % "2.0.0"
 )
 
-scalaVersion := "2.9.1"
+scalaVersion := "2.9.0-1"
