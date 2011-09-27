@@ -1,0 +1,12 @@
+package com.hackdiary.storm
+
+import twitter4j._
+import twitter4j.conf._
+
+object TwitterConfig {
+  def config = new ConfigurationBuilder()
+    .setOAuthAccessToken("ACCESS_TOKEN")
+    .setOAuthAccessTokenSecret("ACCESS_TOKEN_SECRET")
+    .setOAuthConsumerKey("CONSUMER_KEY")
+    .setOAuthConsumerSecret("CONSUMER_SECRET")
+}
