@@ -1,3 +1,5 @@
 As part of my learning process, a rewrite of Storm's wordcount topology in Scala with some extra toys: uses Lucene's ShingleFilter to count the word 2-grams in the Twitter sample firehose. An output bolt pushes the results into Redis.
 
 Sample results: https://gist.github.com/1244665
+
+Uses language detection code from http://code.google.com/p/language-detection
